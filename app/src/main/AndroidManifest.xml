@@ -29,8 +29,23 @@
         <activity
             android:name=".ProductViewActivity"
             android:label="@string/title_activity_product_view"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".CreateEmployee"></activity>
+=======
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".CreateEmployeeActivity"
+            android:label="@string/title_activity_create_employee"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+>>>>>>> 5b92bb214e1bd6e090485885d560de061873af4b
     </application>
 
 </manifest>
