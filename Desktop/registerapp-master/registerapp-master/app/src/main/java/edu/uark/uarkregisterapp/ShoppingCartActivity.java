@@ -31,7 +31,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_cart);
         myCart = new ShoppingCart();
     }
-
+ 
     private class RetrieveShoppingTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
