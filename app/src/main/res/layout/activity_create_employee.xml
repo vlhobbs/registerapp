@@ -24,8 +24,4 @@
 
     <include layout="@layout/content_create_employee"/>
 
-<<<<<<< HEAD
 </android.support.design.widget.CoordinatorLayout>
-=======
-</android.support.design.widget.CoordinatorLayout>
->>>>>>> 5b92bb214e1bd6e090485885d560de061873af4b
