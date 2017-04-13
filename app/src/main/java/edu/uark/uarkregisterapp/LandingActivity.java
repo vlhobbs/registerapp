@@ -35,7 +35,9 @@ public class LandingActivity extends AppCompatActivity {
 
 		(new QueryActiveEmployeeCountsTask()).execute();
 	}
-
+    public void createEmployeeButtonOnClick(View view){
+		this.startActivity(new Intent(getApplicationContext(), CreateEmployeeActivity.class));
+	}
 	public void signInButtonOnClick(View view) {
 		if (StringUtils.isBlank(this.getEmployeeIdEditText().getText().toString())) {
 			new AlertDialog.Builder(this).

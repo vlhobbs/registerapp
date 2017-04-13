@@ -29,16 +29,20 @@
         <activity
             android:name=".ProductViewActivity"
             android:label="@string/title_activity_product_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CreateEmployeeActivity"
             android:label="@string/title_activity_create_employee"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ShoppingCartActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:label="ShoppingCartActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        </activity>
     </application>
 
 </manifest>

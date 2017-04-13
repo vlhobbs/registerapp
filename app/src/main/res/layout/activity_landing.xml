@@ -57,4 +57,14 @@
         android:text="@string/button_sign_in"
         android:onClick="signInButtonOnClick"/>
 
+    <Button
+        android:id="@+id/button_create_employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:text="Create Employee"
+        android:onClick="createEmployeeButtonOnClick"
+        android:layout_below="@+id/button_sign_in"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
