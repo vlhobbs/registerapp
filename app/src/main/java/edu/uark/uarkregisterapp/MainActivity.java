@@ -3,6 +3,7 @@ package edu.uark.uarkregisterapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import edu.uark.uarkregisterapp.models.api.ShoppingCart;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-
+        ShoppingCart myCart = new ShoppingCart();
 		this.getEmployeeWelcomeTextView().setText("Welcome " + this.employeeTransition.getFirstName() + " (" + this.employeeTransition.getEmployeeId() + ")!");
 	}
 
@@ -38,12 +39,22 @@ public class MainActivity extends AppCompatActivity {
 		this.displayFunctionalityNotAvailableDialog();
 	}
 
+	public void viewProductButtonOnClick(View view){
+		this.startActivity(new Intent(getApplicationContext(), ProductViewActivity.class));
+	}
+	public void viewProductListingButtonOnClick(View view){
+		this.startActivity(new Intent(getApplicationContext(), ProductsListingActivity.class));
+	}
+	public void shoppingCartButtonOnClick(View view){
+		this.startActivity(new Intent(getApplicationContext(), ShoppingCartActivity.class));
+	}
+
 	public void cashierSalesReportButtonOnClick(View view) {
 		this.displayFunctionalityNotAvailableDialog();
 	}
 
 	public void createEmployeeButtonOnClick(View view) {
-		this.displayFunctionalityNotAvailableDialog();
+		this.startActivity(new Intent(getApplicationContext(), CreateEmployeeActivity.class));
 	}
 
 	public void logOutButtonOnClick(View view) {

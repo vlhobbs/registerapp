@@ -2,10 +2,10 @@ package edu.uark.uarkregisterapp.models.api;
 import java.util.ArrayList;
 public class ShoppingCart
 {
-    ArrayList<Product> cart;
-    int count;
-    int totalPrice;
-    ShoppingCart()
+    private ArrayList<Product> cart;
+    private int count;
+    private int totalPrice;
+   public ShoppingCart()
     {
         cart = new ArrayList();
         count = 0;
