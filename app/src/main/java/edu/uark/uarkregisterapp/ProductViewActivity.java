@@ -1,6 +1,7 @@
 package edu.uark.uarkregisterapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -10,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
+import edu.uark.uarkregisterapp.models.api.ShoppingCart;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,8 @@ public class ProductViewActivity extends AppCompatActivity {
 		}
 
 		this.productTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_product));
+		//Intent intent = getIntent();
+
 	}
 
 	@Override
@@ -181,6 +184,26 @@ public class ProductViewActivity extends AppCompatActivity {
 		}
 
 		return inputIsValid;
+	}
+
+	public void addToCartButtonOnClick()
+	{
+		String quantityTemp = getQuantity().getText().toString();
+		int quantity = Integer.parseInt(quantityTemp);
+		if(quantity < 0 )
+		{
+			new AlertDialog.Builder(this).
+					setMessage(R.string.alert_dialog_functionality_not_available).
+					create().
+					show();
+			this.getQuantity().requestFocus();
+			return;
+		}
+		// Add to Shopping cart
+		this.startActivity( new Intent(getApplicationContext(), MainActivity.class));
+	}
+	private EditText getQuantity() {
+		return (EditText) this.findViewById(R.id.addToCart);
 	}
 
 	private AlertDialog savingProductAlert;
