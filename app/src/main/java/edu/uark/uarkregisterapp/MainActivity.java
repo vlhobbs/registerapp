@@ -56,17 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
 	private void displayFunctionalityNotAvailableDialog() {
 		new AlertDialog.Builder(this).
-			setMessage(R.string.alert_dialog_functionality_not_available).
-			setPositiveButton(
-				R.string.button_ok,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.dismiss();
-					}
-				}
-			).
-			create().
-			show();
+				setMessage(R.string.alert_dialog_functionality_not_available).
+				setPositiveButton(
+						R.string.button_ok,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								dialog.dismiss();
+							}
+						}
+				).
+				create().
+				show();
 	}
 
 	private EmployeeTransition employeeTransition;

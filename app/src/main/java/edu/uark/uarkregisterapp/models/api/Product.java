@@ -34,6 +34,8 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.lookupCode = lookupCode;
 		return this;
 	}
+    private int price;
+	public int getCost(){return price;}
 
 	private int count;
 	public int getCount() {
