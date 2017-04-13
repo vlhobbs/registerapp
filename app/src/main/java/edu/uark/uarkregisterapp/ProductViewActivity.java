@@ -21,6 +21,7 @@ import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.enums.ProductApiRequestStatus;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
+import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
 public class ProductViewActivity extends AppCompatActivity {
 	@Override
@@ -33,7 +34,7 @@ public class ProductViewActivity extends AppCompatActivity {
 		if (actionBar != null) {
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
-
+		this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
 		this.productTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_product));
 		//Intent intent = getIntent();
 
@@ -199,13 +200,16 @@ public class ProductViewActivity extends AppCompatActivity {
 			this.getQuantity().requestFocus();
 			return;
 		}
-		// Add to Shopping cart
+		// Might be wrong
+		Product newAddition = new Product(productTransition);
+		myCart.add(newAddition, quantity);
 		this.startActivity( new Intent(getApplicationContext(), MainActivity.class));
 	}
 	private EditText getQuantity() {
 		return (EditText) this.findViewById(R.id.addToCart);
 	}
 
+	private ShoppingCartTransition myCart;
 	private AlertDialog savingProductAlert;
 	private ProductTransition productTransition;
 }

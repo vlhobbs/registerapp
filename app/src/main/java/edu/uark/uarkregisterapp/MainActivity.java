@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import edu.uark.uarkregisterapp.models.api.ShoppingCart;
+
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -12,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
 public class MainActivity extends AppCompatActivity {
 	@Override
@@ -20,14 +24,13 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
 		this.employeeTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
+        myCart = new ShoppingCart();
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-        ShoppingCart myCart = new ShoppingCart();
 		this.getEmployeeWelcomeTextView().setText("Welcome " + this.employeeTransition.getFirstName() + " (" + this.employeeTransition.getEmployeeId() + ")!");
 	}
 
@@ -40,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void viewProductButtonOnClick(View view){
-		this.startActivity(new Intent(getApplicationContext(), ProductViewActivity.class));
+		Intent intent = new Intent(getApplicationContext(), ProductViewActivity.class);
+        intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
+		this.startActivity(intent);
 	}
 	public void viewProductListingButtonOnClick(View view){
 		this.startActivity(new Intent(getApplicationContext(), ProductsListingActivity.class));
@@ -81,4 +86,5 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private EmployeeTransition employeeTransition;
+    private ShoppingCart myCart;
 }
