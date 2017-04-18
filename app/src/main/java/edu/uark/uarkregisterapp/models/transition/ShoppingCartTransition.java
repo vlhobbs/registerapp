@@ -37,8 +37,10 @@ public class ShoppingCartTransition implements Parcelable{
     {
         this.count = shoppingCartParcel.readInt();
         this.totalPrice = shoppingCartParcel.readInt();
+        cart = new ArrayList<Product>();
+        this.cart = shoppingCartParcel.readList();
 
-        // Pass along ArrayList not sure how
+        // need to work on ^^^^
     }
 
 
@@ -80,7 +82,7 @@ public class ShoppingCartTransition implements Parcelable{
     public void writeToParcel(Parcel destination, int flags) {
         destination.writeInt(this.totalPrice);
         destination.writeInt(this.count);
-        destination.writeArray(this.cart.toArray());
+        destination.writeList(cart);
     }
     public static final Parcelable.Creator<ShoppingCartTransition> CREATOR = new Parcelable.Creator<ShoppingCartTransition>() {
         public ShoppingCartTransition createFromParcel(Parcel employeeTransitionParcel) {
