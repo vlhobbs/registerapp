@@ -203,7 +203,9 @@ public class ProductViewActivity extends AppCompatActivity {
 		// Might be wrong
 		Product newAddition = new Product(productTransition);
 		myCart.add(newAddition, quantity);
-		this.startActivity( new Intent(getApplicationContext(), MainActivity.class));
+		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
+		intent.putExtra("Shopping Cart", myCart);
+		this.startActivity(intent);
 	}
 	private EditText getQuantity() {
 		return (EditText) this.findViewById(R.id.addToCart);

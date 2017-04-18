@@ -1,5 +1,8 @@
 package edu.uark.uarkregisterapp.models.api;
 import java.util.ArrayList;
+
+import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
+
 public class ShoppingCart
 {
     private ArrayList<Product> cart;
@@ -11,7 +14,12 @@ public class ShoppingCart
         count = 0;
         totalPrice = 0;
     }
-
+    public ShoppingCart (ShoppingCartTransition ShoppingT)
+    {
+        cart = ShoppingT.getList();
+        count = ShoppingT.getCount();
+        totalPrice = ShoppingT.getTotalPrice();
+    }
     public void add(Product input, int quantity)
     {
         cart.add(input);

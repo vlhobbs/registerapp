@@ -38,11 +38,8 @@ public class ShoppingCartTransition implements Parcelable{
         this.count = shoppingCartParcel.readInt();
         this.totalPrice = shoppingCartParcel.readInt();
         cart = new ArrayList<Product>();
-        this.cart = shoppingCartParcel.readList();
-
-        // need to work on ^^^^
+        shoppingCartParcel.readList(cart, null);
     }
-
 
     public void add(Product input, int quantity)
     {
