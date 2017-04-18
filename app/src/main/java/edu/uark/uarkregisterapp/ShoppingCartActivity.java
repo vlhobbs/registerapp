@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
+        TextView textView = (TextView) findViewById(R.id.text_total_price);
+        textView.setText(myCart.getTotalPrice());
         setContentView(R.layout.activity_shopping_cart);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = this.getSupportActionBar();
@@ -66,9 +69,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private ListView getShoppingListView() {
         return (ListView) this.findViewById(R.id.list_view_shoppingcart);
     }
-    private EditText getTotalPriceEditText() {
-        return (EditText) this.findViewById(R.id.edit_text_total_price);
-    }
+
 
 private class RetrieveShoppingTask extends AsyncTask<Void, Void, Void> {
         @Override
