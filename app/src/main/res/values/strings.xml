@@ -4,6 +4,7 @@
     <string name="title_activity_product_view">ProductViewActivity</string>
     <string name="button_save">Save</string>
     <string name="button_ok">OK</string>
+    <string name="button_start_transaction">Check Out</string>
     <string name="button_dismiss">Dismiss</string>
     <string name="button_all_products">Show All Products</string>
     <string name="button_sign_in">Sign In</string>

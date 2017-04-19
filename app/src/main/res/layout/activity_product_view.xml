@@ -23,20 +23,6 @@
 
     <include layout="@layout/content_product_view"/>
 
-    <EditText
-        android:id="@+id/addToCart"
-        android:hint="Enter Quantity"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="300dp"/>
-    <Button
-        android:id="@+id/button_add_to_cart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
-        android:text="Add to Cart"
-        android:onClick="addToCartButtonOnClick"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

@@ -77,6 +77,12 @@ public class ProductViewActivity extends AppCompatActivity {
 			Integer.parseInt(this.getProductCountEditText().getText().toString())
 		)).execute();
 	}
+	public void returnButtonOnClick(View view)
+	{
+		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
+		intent.putExtra("Shopping Cart", myCart);
+		this.startActivity(intent);
+	}
 
 	private EditText getProductLookupCodeEditText() {
 		return (EditText) this.findViewById(R.id.edit_text_product_lookup_code);

@@ -1,5 +1,6 @@
 package edu.uark.uarkregisterapp;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -33,19 +34,20 @@ public class ShoppingCartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
         TextView textView = (TextView) findViewById(R.id.text_total_price);
-        textView.setText(myCart.getTotalPrice());
+        textView.setText("Total Price: " + myCart.getTotalPrice());
+        textView = (TextView) findViewById(R.id.text_total_products);
+        textView.setText("Number of Products: " + myCart.getCount());
         setContentView(R.layout.activity_shopping_cart);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = this.getSupportActionBar();
-    if (actionBar != null) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        this.products = myCart.getList();
+        this.shoppingListAdapter = new ShoppingListAdapter(this, this.products);
 
-    this.products = myCart.getList();
-    this.shoppingListAdapter = new ShoppingListAdapter(this, this.products);
-
-    this.getShoppingListView().setAdapter(this.shoppingListAdapter);
-    this.getShoppingListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.getShoppingListView().setAdapter(this.shoppingListAdapter);
+        this.getShoppingListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(getApplicationContext(), ProductViewActivity.class);
@@ -70,15 +72,38 @@ public class ShoppingCartActivity extends AppCompatActivity {
         return (ListView) this.findViewById(R.id.list_view_shoppingcart);
     }
 
+    public void startTransactionButtonOnClick(View view)
+    {
+        this.displayFunctionalityNotAvailableDialog();
+    }
+
+    private void displayFunctionalityNotAvailableDialog() {
+        new AlertDialog.Builder(this).
+                setMessage(R.string.alert_dialog_functionality_not_available).
+                setPositiveButton(
+                        R.string.button_ok,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        }
+                ).
+                create().
+                show();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        this.loadingShoppingAlert.show();
+        (new RetrieveShoppingTask()).execute();
+    }
 
 private class RetrieveShoppingTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... params) {
             products.clear();
-            products.addAll(
-                    (new ShoppingService()).getProducts()
-            );
-
+            products.addAll(myCart.getList());
             return null;
         }
 
