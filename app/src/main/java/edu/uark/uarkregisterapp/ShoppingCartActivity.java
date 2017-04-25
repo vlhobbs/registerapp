@@ -24,6 +24,7 @@ import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.ShoppingCart;
 import edu.uark.uarkregisterapp.models.api.services.ShoppingService;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
 import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
@@ -33,6 +34,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
+        this.curEmployee = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
         TextView textView = (TextView) findViewById(R.id.text_total_price);
         textView.setText("Total Price: " + myCart.getTotalPrice());
         textView = (TextView) findViewById(R.id.text_total_products);
@@ -58,6 +60,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
             );
             intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
+            intent.putExtra(
+                    getString(R.string.intent_extra_employee),
+                    curEmployee
+            );
             startActivity(intent);
         }
     });
@@ -67,7 +73,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
     setMessage(R.string.alert_dialog_products_loading).
     create();
 }
-
     private ListView getShoppingListView() {
         return (ListView) this.findViewById(R.id.list_view_shoppingcart);
     }
@@ -116,5 +121,6 @@ private class RetrieveShoppingTask extends AsyncTask<Void, Void, Void> {
     private List<Product> products;
     private AlertDialog loadingShoppingAlert;
     private ShoppingListAdapter shoppingListAdapter;
+    private EmployeeTransition curEmployee;
 
 }

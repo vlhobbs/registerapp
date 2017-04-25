@@ -19,12 +19,14 @@ import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
 import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 
 public class ProductsListingActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
+		this.curEmploy = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
 		setContentView(R.layout.activity_products_listing);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 		ActionBar actionBar = this.getSupportActionBar();
@@ -44,6 +46,10 @@ public class ProductsListingActivity extends AppCompatActivity {
 				intent.putExtra(
 					getString(R.string.intent_extra_product),
 					new ProductTransition((Product) getProductsListView().getItemAtPosition(position))
+				);
+				intent.putExtra(
+						getString(R.string.intent_extra_employee),
+						curEmploy
 				);
 				intent.putExtra("Shopping Cart", myCart);
 				startActivity(intent);
@@ -89,4 +95,5 @@ public class ProductsListingActivity extends AppCompatActivity {
 	private AlertDialog loadingProductsAlert;
 	private ProductListAdapter productListAdapter;
 	private ShoppingCartTransition myCart;
+	private EmployeeTransition curEmploy;
 }

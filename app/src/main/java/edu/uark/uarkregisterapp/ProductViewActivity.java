@@ -20,6 +20,7 @@ import java.util.Locale;
 import edu.uark.uarkregisterapp.models.api.Product;
 import edu.uark.uarkregisterapp.models.api.enums.ProductApiRequestStatus;
 import edu.uark.uarkregisterapp.models.api.services.ProductService;
+import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
 import edu.uark.uarkregisterapp.models.transition.ProductTransition;
 import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
@@ -36,6 +37,8 @@ public class ProductViewActivity extends AppCompatActivity {
 		}
 		this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
 		this.productTransition = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_product));
+		this.curEmployee = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
+
 		//Intent intent = getIntent();
 
 	}
@@ -81,6 +84,10 @@ public class ProductViewActivity extends AppCompatActivity {
 	{
 		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
 		intent.putExtra("Shopping Cart", myCart);
+		intent.putExtra(
+				getString(R.string.intent_extra_employee),
+				curEmployee
+		);
 		this.startActivity(intent);
 	}
 
@@ -211,6 +218,10 @@ public class ProductViewActivity extends AppCompatActivity {
 		myCart.add(newAddition, quantity);
 		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
 		intent.putExtra("Shopping Cart", myCart);
+		intent.putExtra(
+				getString(R.string.intent_extra_employee),
+				curEmployee
+		);
 		this.startActivity(intent);
 	}
 	private EditText getQuantity() {
@@ -220,4 +231,5 @@ public class ProductViewActivity extends AppCompatActivity {
 	private ShoppingCartTransition myCart;
 	private AlertDialog savingProductAlert;
 	private ProductTransition productTransition;
+	private EmployeeTransition curEmployee;
 }

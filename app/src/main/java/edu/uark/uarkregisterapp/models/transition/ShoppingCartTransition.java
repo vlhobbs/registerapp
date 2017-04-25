@@ -43,14 +43,20 @@ public class ShoppingCartTransition implements Parcelable{
 
     public void add(Product input, int quantity)
     {
-        cart.add(input);
+        for(int i = 0; i < quantity; i++)
+        {
+            cart.add(input);
+        }
         count += quantity;
         totalPrice += (quantity * input.getCost());
     }
 
     public void remove(Product input, int quantity)
     {
-        cart.remove(input);
+        for(int i = 0; i < quantity; i++)
+        {
+            cart.remove(input);
+        }
         count -= quantity;
         totalPrice -= (quantity * input.getCost());
     }

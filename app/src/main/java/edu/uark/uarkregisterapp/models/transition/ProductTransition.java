@@ -39,7 +39,9 @@ public class ProductTransition implements Parcelable {
 		this.count = count;
 		return this;
 	}
-
+	private boolean salable;
+	public boolean getSalable() {return salable;}
+	public void setSalable(boolean newSalable) { salable = newSalable;}
 	private Date createdOn;
 	public Date getCreatedOn() {
 		return this.createdOn;
@@ -54,6 +56,7 @@ public class ProductTransition implements Parcelable {
 		destination.writeByteArray((new UUIDToByteConverterCommand()).setValueToConvert(this.id).execute());
 		destination.writeString(this.lookupCode);
 		destination.writeInt(this.count);
+		destination.writeInt(salable ?  1 : 0);
 		destination.writeLong(this.createdOn.getTime());
 	}
 
@@ -81,7 +84,8 @@ public class ProductTransition implements Parcelable {
 
 	public ProductTransition(Product product) {
 		this.id = product.getId();
-		this.count = product.getCount();
+		this.count = product.getQuantity();
+		this.salable = product.getSalable();
 		this.createdOn = product.getCreatedOn();
 		this.lookupCode = product.getLookupCode();
 	}
@@ -90,7 +94,7 @@ public class ProductTransition implements Parcelable {
 		this.id = (new ByteToUUIDConverterCommand()).setValueToConvert(productTransitionParcel.createByteArray()).execute();
 		this.lookupCode = productTransitionParcel.readString();
 		this.count = productTransitionParcel.readInt();
-
+		this.salable = (productTransitionParcel.readInt() == 0) ? false : true;
 		this.createdOn = new Date();
 		this.createdOn.setTime(productTransitionParcel.readLong());
 	}

@@ -44,14 +44,30 @@ public class MainActivity extends AppCompatActivity {
 
 	public void viewProductButtonOnClick(View view){
 		Intent intent = new Intent(getApplicationContext(), ProductViewActivity.class);
+		intent.putExtra(
+				getString(R.string.intent_extra_employee),
+				employeeTransition
+		);
         intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
 		this.startActivity(intent);
 	}
 	public void viewProductListingButtonOnClick(View view){
-		this.startActivity(new Intent(getApplicationContext(), ProductsListingActivity.class));
+		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
+		intent.putExtra(
+				getString(R.string.intent_extra_employee),
+				employeeTransition
+		);
+		intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
+		this.startActivity(intent);
 	}
 	public void shoppingCartButtonOnClick(View view){
-		this.startActivity(new Intent(getApplicationContext(), ShoppingCartActivity.class));
+		Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
+		intent.putExtra(
+				getString(R.string.intent_extra_employee),
+				employeeTransition
+		);
+		intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
+		this.startActivity(intent);
 	}
 
 	public void cashierSalesReportButtonOnClick(View view) {
