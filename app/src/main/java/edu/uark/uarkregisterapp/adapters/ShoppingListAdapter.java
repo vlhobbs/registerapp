@@ -37,7 +37,7 @@ public class ShoppingListAdapter extends ArrayAdapter<Product>
 
             TextView countTextView = (TextView) view.findViewById(R.id.list_view_item_product_count);
             if (countTextView != null) {
-                countTextView.setText(String.format(Locale.getDefault(), "%d", product.getCount()));
+                countTextView.setText(String.format(Locale.getDefault(), "%d", product.getQuantity()));
             }
         }
 

@@ -78,9 +78,7 @@
         android:text="Product Listings"
         android:onClick="viewProductListingButtonOnClick"
         android:layout_alignTop="@+id/button_view_product"
-        android:layout_toEndOf="@+id/button_view_product"
-        android:layout_alignLeft="@+id/text_view_employee_welcome"
-        android:layout_alignStart="@+id/text_view_employee_welcome" />
+        android:layout_toRightOf="@+id/button_view_product"/>
 
     <Button
         android:id="@+id/button_cashier_sales_report"
@@ -101,10 +99,8 @@
         android:layout_height="wrap_content"
         android:text="@string/button_product_sales_report"
         android:onClick="productSalesReportButtonOnClick"
-        android:layout_alignBaseline="@+id/button_cashier_sales_report"
         android:layout_alignBottom="@+id/button_cashier_sales_report"
-        android:layout_toRightOf="@+id/text_view_employee_welcome"
-        android:layout_alignRight="@+id/button_view_product_listing"
-        android:layout_alignEnd="@+id/button_view_product_listing" />
+        android:layout_alignTop="@+id/button_cashier_sales_report"
+        android:layout_toRightOf="@+id/button_cashier_sales_report" />
 
 </RelativeLayout>

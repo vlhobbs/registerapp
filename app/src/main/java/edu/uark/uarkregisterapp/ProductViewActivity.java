@@ -106,13 +106,12 @@ public class ProductViewActivity extends AppCompatActivity {
 	private class SaveActivityTask extends AsyncTask<Void, Void, Boolean> {
 		@Override
 		protected Boolean doInBackground(Void... params) {
-			Product product = (new ProductService()).putProduct(
-				(new Product()).
-					setId(productTransition.getId()).
-					setLookupCode(this.lookupCode).
-					setCount(this.count)
-			);
-
+            Product temp = new Product();
+            temp.setId(productTransition.getId());
+            temp.setLookupCode(this.lookupCode);
+            temp.setQuantity(this.count);
+            temp.setSalable(true);
+			Product product = (new ProductService()).putProduct((temp));
 			if (product.getApiRequestStatus() == ProductApiRequestStatus.OK) {
 				productTransition.setCount(this.count);
 				productTransition.setLookupCode(this.lookupCode);

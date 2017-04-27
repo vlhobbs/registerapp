@@ -38,6 +38,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 	private int quantity;
 	public int getQuantity() {return quantity;}
 	public void setQuantity(int newQuantity) {quantity = newQuantity;}
+	public void setCount(int newQuantity) {quantity = newQuantity;}
 
 	private boolean salable;
 	public boolean getSalable() {return salable;}
