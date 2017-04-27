@@ -38,10 +38,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-            <activity
-                android:name=".ShoppingCartActivity"
-                android:label="ShoppingCartActivity"
-                android:theme="@style/AppTheme.NoActionBar" />
+        </activity>
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:label="ShoppingCartActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity android:name=".TransactionActivity"></activity>
     </application>
