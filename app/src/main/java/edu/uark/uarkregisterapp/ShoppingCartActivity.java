@@ -29,16 +29,12 @@ import edu.uark.uarkregisterapp.models.transition.ProductTransition;
 import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
 public class ShoppingCartActivity extends AppCompatActivity {
-    private ShoppingCart myCart;
+    private ShoppingCartTransition myCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.myCart = this.getIntent().getParcelableExtra("Shopping Cart");
         this.curEmployee = this.getIntent().getParcelableExtra(this.getString(R.string.intent_extra_employee));
-        TextView textView = (TextView) findViewById(R.id.text_total_price);
-        textView.setText("Total Price: " + myCart.getTotalPrice());
-        textView = (TextView) findViewById(R.id.text_total_products);
-        textView.setText("Number of Products: " + myCart.getCount());
         setContentView(R.layout.activity_shopping_cart);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ActionBar actionBar = this.getSupportActionBar();
@@ -59,7 +55,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
                     new ProductTransition((Product) getShoppingListView().getItemAtPosition(position))
 
             );
-            intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
+            intent.putExtra("Shopping Cart", myCart);
             intent.putExtra(
                     getString(R.string.intent_extra_employee),
                     curEmployee
@@ -99,7 +95,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        TextView textView = (TextView) findViewById(R.id.text_total_price);
+        textView.setText("Total Price: " + myCart.getTotalPrice());
+        textView = (TextView) findViewById(R.id.text_total_products);
+        textView.setText("Number of Products: " + myCart.getCount());
         this.loadingShoppingAlert.show();
         (new RetrieveShoppingTask()).execute();
     }
