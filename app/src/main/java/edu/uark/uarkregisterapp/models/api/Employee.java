@@ -131,7 +131,8 @@ public class Employee implements ConvertToJsonInterface, LoadFromJsonInterface<E
 
 		this.employeeId = rawJsonObject.optString(EmployeeFieldName.EMPLOYEE_ID.getFieldName());
 		this.firstName = rawJsonObject.optString(EmployeeFieldName.FIRST_NAME.getFieldName());
-		this.lastName = rawJsonObject.optString(EmployeeFieldName.FIRST_NAME.getFieldName());
+		this.lastName = rawJsonObject.optString(EmployeeFieldName.LAST_NAME.getFieldName());
+		this.password = rawJsonObject.optString(EmployeeFieldName.PASSWORD.getFieldName());
 		this.active = rawJsonObject.optBoolean(EmployeeFieldName.ACTIVE.getFieldName());
 		this.classification = EmployeeClassification.mapName(
 				rawJsonObject.optString(EmployeeFieldName.CLASSIFICATION.getFieldName())
