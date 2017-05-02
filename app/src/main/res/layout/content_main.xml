@@ -25,7 +25,7 @@
         android:id="@+id/button_create_employee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_view_product_listing"
+        android:layout_below="@+id/button_ShoppingCart_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/button_create_employee"
@@ -56,10 +56,10 @@
         android:layout_marginTop="32dp"
         android:text="view shopping cart"
         android:onClick="shoppingCartButtonOnClick"
-        android:layout_below="@+id/button_product_sales_report"
-        android:layout_alignLeft="@+id/button_begin_transaction"
-        android:layout_alignStart="@+id/button_begin_transaction" />
+        android:layout_below="@+id/button_view_product_listing"
+        android:layout_centerHorizontal="true" />
 
+    <!--
     <Button
         android:id="@+id/button_view_product"
         android:layout_width="wrap_content"
@@ -70,6 +70,7 @@
         android:layout_below="@+id/button_ShoppingCart_view"
         android:layout_toLeftOf="@+id/button_log_out"
         android:layout_toStartOf="@+id/button_log_out" />
+    -->
 
     <Button
         android:id="@+id/button_view_product_listing"
@@ -77,9 +78,10 @@
         android:layout_height="wrap_content"
         android:text="Product Listings"
         android:onClick="viewProductListingButtonOnClick"
-        android:layout_alignTop="@+id/button_view_product"
-        android:layout_toRightOf="@+id/button_view_product"/>
+        android:layout_below="@+id/button_begin_transaction"
+        android:layout_centerHorizontal = "true"/>
 
+    <!--
     <Button
         android:id="@+id/button_cashier_sales_report"
         android:layout_width="wrap_content"
@@ -102,5 +104,6 @@
         android:layout_alignBottom="@+id/button_cashier_sales_report"
         android:layout_alignTop="@+id/button_cashier_sales_report"
         android:layout_toRightOf="@+id/button_cashier_sales_report" />
+    -->
 
 </RelativeLayout>

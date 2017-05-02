@@ -38,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
 		this.displayFunctionalityNotAvailableDialog();
 	}
 
+	/*
 	public void productSalesReportButtonOnClick(View view) {
 		this.displayFunctionalityNotAvailableDialog();
 	}
+	*/
 
+	/*
 	public void viewProductButtonOnClick(View view){
 		Intent intent = new Intent(getApplicationContext(), ProductViewActivity.class);
 		intent.putExtra(
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("Shopping Cart", new ShoppingCartTransition(myCart));
 		this.startActivity(intent);
 	}
+	*/
+
 	public void viewProductListingButtonOnClick(View view){
 		Intent intent = new Intent(getApplicationContext(), ProductsListingActivity.class);
 		intent.putExtra(
@@ -70,9 +75,11 @@ public class MainActivity extends AppCompatActivity {
 		this.startActivity(intent);
 	}
 
+	/*
 	public void cashierSalesReportButtonOnClick(View view) {
 		this.displayFunctionalityNotAvailableDialog();
 	}
+	*/
 
 	public void createEmployeeButtonOnClick(View view) {
 		this.startActivity(new Intent(getApplicationContext(), CreateEmployeeActivity.class));
