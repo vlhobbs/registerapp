@@ -199,9 +199,10 @@ public class ProductViewActivity extends AppCompatActivity {
 		return inputIsValid;
 	}
 
-	public void addToCartButtonOnClick()
+	public void addToCartButtonOnClick(View view)
 	{
-		String quantityTemp = getQuantity().getText().toString();
+		EditText input = (EditText) findViewById(R.id.addToCart);
+		String quantityTemp = input.getText().toString();
 		int quantity = Integer.parseInt(quantityTemp);
 		if(quantity < 0 )
 		{
