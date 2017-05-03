@@ -19,6 +19,7 @@ import edu.uark.uarkregisterapp.models.api.ShoppingCart;
 
 public class ShoppingCartTransition implements Parcelable{
     private ArrayList<Product> cart;
+    private ArrayList<ProductTransition> passCart;
     private int count;
     private int totalPrice;
     public ShoppingCartTransition()
@@ -84,17 +85,19 @@ public class ShoppingCartTransition implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel destination, int flags) {
+        passCart.clear();
         destination.writeInt(this.totalPrice);
         destination.writeInt(this.count);
-        /*
-        ShoppingCartTransition tempCart;
-        ArrayList<ShoppingCartTransition> myCart = new ArrayList<ShoppingCartTransition>();
+
+        ProductTransition tempItem;
         for(int i = 0; i < cart.size(); i++)
         {
-            tempCart = new ShoppingCartTransition(cart.get(i));
+            tempItem = new ProductTransition(cart.get(i));
+            passCart.add(tempItem);
         }
-        */
-        destination.writeList(cart);
+        destination.writeList(passCart);
+
+      //  destination.writeList(cart);
     }
     public static final Parcelable.Creator<ShoppingCartTransition> CREATOR = new Parcelable.Creator<ShoppingCartTransition>() {
         public ShoppingCartTransition createFromParcel(Parcel employeeTransitionParcel) {
