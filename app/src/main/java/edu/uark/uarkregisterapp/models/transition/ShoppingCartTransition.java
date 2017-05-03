@@ -37,10 +37,19 @@ public class ShoppingCartTransition implements Parcelable{
 
     public ShoppingCartTransition(Parcel shoppingCartParcel)
     {
+        passCart = new ArrayList<ProductTransition>();
         this.count = shoppingCartParcel.readInt();
         this.totalPrice = shoppingCartParcel.readInt();
         cart = new ArrayList<Product>();
         shoppingCartParcel.readList(cart, null);
+     /*   shoppingCartParcel.readList(passCart, null);
+        Product tempItem;
+        cart.clear();
+        for(int i = 0; i < passCart.size(); i++)
+        {
+            tempItem = new Product(passCart.get(i));
+            cart.add(tempItem);
+        } */
     }
 
     public void add(Product input, int quantity)
@@ -85,19 +94,20 @@ public class ShoppingCartTransition implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel destination, int flags) {
+        passCart = new ArrayList<ProductTransition>();
         passCart.clear();
         destination.writeInt(this.totalPrice);
         destination.writeInt(this.count);
 
-        ProductTransition tempItem;
+       /* ProductTransition tempItem;
         for(int i = 0; i < cart.size(); i++)
         {
             tempItem = new ProductTransition(cart.get(i));
             passCart.add(tempItem);
         }
         destination.writeList(passCart);
-
-      //  destination.writeList(cart);
+*/
+        destination.writeList(cart);
     }
     public static final Parcelable.Creator<ShoppingCartTransition> CREATOR = new Parcelable.Creator<ShoppingCartTransition>() {
         public ShoppingCartTransition createFromParcel(Parcel employeeTransitionParcel) {
