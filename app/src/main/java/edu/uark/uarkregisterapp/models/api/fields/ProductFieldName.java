@@ -7,6 +7,7 @@ public enum ProductFieldName implements FieldNameInterface {
 	LOOKUP_CODE("lookupCode"),
 	QUANTITY("quantity"),
 	SALABLE("salable"),
+	PRICE("price"),
 	API_REQUEST_STATUS("apiRequestStatus"),
 	API_REQUEST_MESSAGE("apiRequestMessage"),
 	CREATED_ON("createdOn");

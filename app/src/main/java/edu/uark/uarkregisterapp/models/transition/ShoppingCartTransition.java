@@ -86,6 +86,14 @@ public class ShoppingCartTransition implements Parcelable{
     public void writeToParcel(Parcel destination, int flags) {
         destination.writeInt(this.totalPrice);
         destination.writeInt(this.count);
+        /*
+        ShoppingCartTransition tempCart;
+        ArrayList<ShoppingCartTransition> myCart = new ArrayList<ShoppingCartTransition>();
+        for(int i = 0; i < cart.size(); i++)
+        {
+            tempCart = new ShoppingCartTransition(cart.get(i));
+        }
+        */
         destination.writeList(cart);
     }
     public static final Parcelable.Creator<ShoppingCartTransition> CREATOR = new Parcelable.Creator<ShoppingCartTransition>() {

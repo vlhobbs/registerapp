@@ -8,7 +8,7 @@ public class ShoppingCart
     private ArrayList<Product> cart;
     private int count;
     private int totalPrice;
-   public ShoppingCart()
+    public ShoppingCart()
     {
         cart = new ArrayList();
         count = 0;

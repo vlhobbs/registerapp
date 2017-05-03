@@ -47,7 +47,10 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 
     private int price;
 	public int getCost(){return price;}
-
+    public void setCost(int inprice)
+	{
+		price = inprice;
+	}
 
 	private Date createdOn;
 	public Date getCreatedOn() {
@@ -92,6 +95,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.lookupCode = rawJsonObject.optString(ProductFieldName.LOOKUP_CODE.getFieldName());
 		this.quantity = rawJsonObject.optInt(ProductFieldName.QUANTITY.getFieldName());
 		this.salable = rawJsonObject.optBoolean(ProductFieldName.SALABLE.getFieldName());
+		this.price = rawJsonObject.optInt(ProductFieldName.PRICE.getFieldName());
 
 		value = rawJsonObject.optString(ProductFieldName.CREATED_ON.getFieldName());
 		if (!StringUtils.isBlank(value)) {
@@ -121,6 +125,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 			jsonObject.put(ProductFieldName.LOOKUP_CODE.getFieldName(), this.lookupCode);
 			jsonObject.put(ProductFieldName.QUANTITY.getFieldName(), this.quantity);
 			jsonObject.put(ProductFieldName.SALABLE.getFieldName(), this.salable);
+			jsonObject.put(ProductFieldName.PRICE.getFieldName(), this.price);
 			jsonObject.put(ProductFieldName.CREATED_ON.getFieldName(), (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US)).format(this.createdOn));
 			jsonObject.put(ProductFieldName.API_REQUEST_MESSAGE.getFieldName(), this.apiRequestMessage);
 			jsonObject.put(ProductFieldName.API_REQUEST_STATUS.getFieldName(), this.apiRequestStatus.name());
@@ -137,6 +142,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.id = new UUID(0, 0);
 		this.salable = false;
 		this.createdOn = new Date();
+		this.price = 0;
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
 	}
@@ -145,6 +151,7 @@ public class Product implements ConvertToJsonInterface, LoadFromJsonInterface<Pr
 		this.id = productTransition.getId();
 		this.quantity = productTransition.getCount();
 		this.salable = productTransition.getSalable();
+		this.price = productTransition.getCost();
 		this.apiRequestMessage = StringUtils.EMPTY;
 		this.createdOn = productTransition.getCreatedOn();
 		this.apiRequestStatus = ProductApiRequestStatus.OK;
