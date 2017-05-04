@@ -17,9 +17,11 @@ import java.security.NoSuchAlgorithmException;
 import edu.uark.uarkregisterapp.models.api.ActiveEmployeeCounts;
 import edu.uark.uarkregisterapp.models.api.Employee;
 import edu.uark.uarkregisterapp.models.api.EmployeeLogin;
+import edu.uark.uarkregisterapp.models.api.ShoppingCart;
 import edu.uark.uarkregisterapp.models.api.enums.EmployeeApiRequestStatus;
 import edu.uark.uarkregisterapp.models.api.services.EmployeeService;
 import edu.uark.uarkregisterapp.models.transition.EmployeeTransition;
+import edu.uark.uarkregisterapp.models.transition.ShoppingCartTransition;
 
 public class LandingActivity extends AppCompatActivity {
 
@@ -27,6 +29,7 @@ public class LandingActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_landing);
+		myCart = new ShoppingCart();
 	}
 
 	@Override
@@ -161,4 +164,5 @@ public class LandingActivity extends AppCompatActivity {
 
 		private AlertDialog signInAlert;
 	}
+	ShoppingCart myCart;
 }

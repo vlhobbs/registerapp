@@ -49,7 +49,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent(getApplicationContext(), ProductViewActivity.class);
-
             intent.putExtra(
                     getString(R.string.intent_extra_product),
                     new ProductTransition((Product) getShoppingListView().getItemAtPosition(position))

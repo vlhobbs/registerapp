@@ -22,7 +22,7 @@ public class ShoppingCart
     }
     public void add(Product input, int quantity)
     {
-        for(int i = 0; i < quantity; i++)
+        for(int i = 1; i < quantity; i++)
         {
             cart.add(input);
         }
@@ -32,7 +32,7 @@ public class ShoppingCart
 
     public void remove(Product input, int quantity)
     {
-        for(int i = 0; i < quantity; i++)
+        for(int i = 1; i < quantity; i++)
         {
             cart.remove(input);
         }

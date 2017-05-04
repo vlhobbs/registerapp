@@ -41,8 +41,8 @@ public class ShoppingCartTransition implements Parcelable{
         this.count = shoppingCartParcel.readInt();
         this.totalPrice = shoppingCartParcel.readInt();
         cart = new ArrayList<Product>();
-        shoppingCartParcel.readList(cart, null);
-     /*   shoppingCartParcel.readList(passCart, null);
+        //shoppingCartParcel.readList(cart, getClass().getClassLoader());
+       /* passCart = shoppingCartParcel.readArrayList(getClass().getClassLoader());
         Product tempItem;
         cart.clear();
         for(int i = 0; i < passCart.size(); i++)
@@ -54,7 +54,7 @@ public class ShoppingCartTransition implements Parcelable{
 
     public void add(Product input, int quantity)
     {
-        for(int i = 0; i < quantity; i++)
+        for(int i = 1; i < quantity; i++)
         {
             cart.add(input);
         }
@@ -64,7 +64,7 @@ public class ShoppingCartTransition implements Parcelable{
 
     public void remove(Product input, int quantity)
     {
-        for(int i = 0; i < quantity; i++)
+        for(int i = 1; i < quantity; i++)
         {
             cart.remove(input);
         }
@@ -98,16 +98,16 @@ public class ShoppingCartTransition implements Parcelable{
         passCart.clear();
         destination.writeInt(this.totalPrice);
         destination.writeInt(this.count);
-
        /* ProductTransition tempItem;
         for(int i = 0; i < cart.size(); i++)
         {
             tempItem = new ProductTransition(cart.get(i));
             passCart.add(tempItem);
         }
-        destination.writeList(passCart);
-*/
-        destination.writeList(cart);
+        List<ProductTransition> listCart =  passCart;
+        destination.writeList(listCart); */
+
+     //   destination.writeList(cart);
     }
     public static final Parcelable.Creator<ShoppingCartTransition> CREATOR = new Parcelable.Creator<ShoppingCartTransition>() {
         public ShoppingCartTransition createFromParcel(Parcel employeeTransitionParcel) {
@@ -117,5 +117,6 @@ public class ShoppingCartTransition implements Parcelable{
         public ShoppingCartTransition[] newArray(int size) {
             return new ShoppingCartTransition[size];
         }
+
     };
 }

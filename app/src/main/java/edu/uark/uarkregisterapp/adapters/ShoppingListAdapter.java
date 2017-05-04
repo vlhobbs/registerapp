@@ -25,17 +25,17 @@ public class ShoppingListAdapter extends ArrayAdapter<Product>
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(this.getContext());
-            view = inflater.inflate(R.layout.list_view_item_product, parent, false);
+            view = inflater.inflate(R.layout.list_view_shopping_products, parent, false);
         }
 
         Product product = this.getItem(position);
         if (product != null) {
-            TextView lookupCodeTextView = (TextView) view.findViewById(R.id.list_view_item_product_lookup_code);
+            TextView lookupCodeTextView = (TextView) view.findViewById(R.id.list_view_item_product_name);
             if (lookupCodeTextView != null) {
                 lookupCodeTextView.setText(product.getLookupCode());
             }
 
-            TextView costTextView = (TextView) view.findViewById(R.id.list_view_item_product_cost);
+            TextView costTextView = (TextView) view.findViewById(R.id.list_view_item_shopping_product);
             if (costTextView != null) {
                 costTextView.setText(String.format(Locale.getDefault(), "%d", product.getCost()));
             }
@@ -45,6 +45,6 @@ public class ShoppingListAdapter extends ArrayAdapter<Product>
     }
 
     public ShoppingListAdapter(Context context, List<Product> products) {
-        super(context, R.layout.list_view_item_product, products);
+        super(context, R.layout.list_view_shopping_products, products);
     }
 }
